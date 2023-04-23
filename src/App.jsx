@@ -60,11 +60,13 @@ const App = () => {
   // update todo
   const editTodo = async (todo) => {
     // todoInput = todo.text;
+    setTodoInput(todo.text);
     console.log(todo);
     await updateDoc(doc(db, "todos", todo.id), {
-      text: todoInput,
       isCompleted: false,
+      text: todoInput,
     });
+    setTodoInput("");
   };
   const toggleComplete = async (todo) => {
     await updateDoc(doc(db, "todos", todo.id), {
